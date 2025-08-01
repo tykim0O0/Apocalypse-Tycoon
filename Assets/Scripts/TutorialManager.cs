@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+    GameManager gameManager;
+
     public TMP_Text tutorialTxt;
     public Canvas panelCanvas;
 
@@ -17,6 +19,11 @@ public class TutorialManager : MonoBehaviour
     bool isNext = false; // 특정 키 입력 대기를 위한 변수
     int paragraphCnt = 0; // 문단 카운트
     public float textDelay = 0.05f; // 유니티 인스펙터에서 수정 가능하도록 public
+
+    private void Start()
+    {
+        gameManager = GetComponent<GameManager>();
+    }
 
     // Start is called before the first frame update
     public void StartTutorial()
@@ -33,8 +40,10 @@ public class TutorialManager : MonoBehaviour
         tutorialTxt.gameObject.SetActive(false); // SetActive는 gameObject에 붙어 있는 메소드
         // 게임 시작 함수 호출
         panelCanvas.gameObject.SetActive(true); // 게임 시작을 위해.. 나중에 필요없어지면 삭제
+        gameManager.GameEvent();
     }
 
+    // 얘를 GameManager로 옮겨서 여기저기 쓰게 하는 게 나을 듯
     IEnumerator Typing(string texts) // 코루틴
     {
         // 타이핑 효과 - 한 글자씩 입력
