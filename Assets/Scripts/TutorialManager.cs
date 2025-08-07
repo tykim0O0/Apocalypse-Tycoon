@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro; // TextMeshProUGUI, TMP_Text 클래스
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TutorialManager : MonoBehaviour
 
     public TMP_Text tutorialTxt;
     public Canvas panelCanvas;
+    public Button skipBtn;
 
     string[] tutorialDialogue = {
         "지구는 환경 오염으로 인해 망했다.\n대기 이산화탄소 농도는 끝도 없이 높아지고, 생물종이 다수 멸종했다.\n원인을 모르는 질병과 자연재해로 인구수는 줄었다.\n사회 시스템이 무너지고 몰아치는 재난에 이대로 인류는 멸종…하는 줄 알았으나",
@@ -30,14 +32,16 @@ public class TutorialManager : MonoBehaviour
     {
         panelCanvas.gameObject.SetActive(false); // 왜 이 코드가 안 먹히는가
         tutorialTxt.gameObject.SetActive(true);
+        skipBtn.gameObject.SetActive(true);
         tutorialTxt.text = null; // TMP_Text.text 비우기
         StartCoroutine(Typing(tutorialDialogue[paragraphCnt]));
     }
 
-    void EndTutorial()
+    public void EndTutorial()
     {
         tutorialTxt.text = null;
         tutorialTxt.gameObject.SetActive(false); // SetActive는 gameObject에 붙어 있는 메소드
+        skipBtn.gameObject.SetActive(false);
         // 게임 시작 함수 호출
         panelCanvas.gameObject.SetActive(true); // 게임 시작을 위해.. 나중에 필요없어지면 삭제
         gameManager.GameEvent();
