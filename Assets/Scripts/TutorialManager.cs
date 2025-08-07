@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour
     };
     bool isNext = false; // 특정 키 입력 대기를 위한 변수
     int paragraphCnt = 0; // 문단 카운트
-    public float textDelay = 0.05f; // 유니티 인스펙터에서 수정 가능하도록 public
+    public float textDelay = 0.001f; // 유니티 인스펙터에서 수정 가능하도록 public
 
     private void Start()
     {

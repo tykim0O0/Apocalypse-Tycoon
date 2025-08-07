@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     string[] itemName = { "물", "정화된 물", "통조림", "방독면", "마스크", "약", "무기" };
     int[] itemPrice = { 25, 50, 30, 100, 10, 200, 1000 };
     bool[] itemAvail = { true, false, true, true, false, true, true };
-    float[] itemProba = { 0.4f, 0.0f, 0.4f, 0.1f, 0.0f, 0.05f, 0.05f };
+    float[] itemProba = { 0.8f, 0.0f, 0.8f, 0.3f, 0.0f, 0.1f, 0.1f };
 
     public int day; // 게임 날짜
     public int money; // 플레이어 자금
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
         tutorialManager.StartTutorial();
 
+        items = new Item[7];
         // 물품 초기 정보
         for(int i = 0; i < 7; i++)
         {
